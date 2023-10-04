@@ -2,6 +2,7 @@ package com.example.servlet;
 
 import java.io.IOException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -26,6 +27,7 @@ public class AddUserServlet extends HttpServlet {
 		User userObject = new User(firsrName, secondName);
 		Warehouse.getInstance().addUser(userObject);
 		req.setAttribute("user", userObject);
-		req.getRequestDispatcher("/json/add.jsp").forward(req, resp);
+		RequestDispatcher requestDispatcher = req.getRequestDispatcher("/json/add.jsp");
+		requestDispatcher.forward(req, resp);
 	}
 }
